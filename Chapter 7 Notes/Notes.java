@@ -63,11 +63,12 @@ public class Notes
          * Arrays have a fixed size once initialized. The index specified must refer to a valid
          *      element. Otherwise, an ArrayIndexOutOfBounds exception is generated.
          */
-
-        for (int i = 0; i <= odds.length; i++)
-        {
-            System.out.println(i + ": " + odds[i]);
-        }
+        /*
+         * for (int i = 0; i <= odds.length; i++)
+         * {
+         *    System.out.println(i + ": " + odds[i]);
+         * }
+         */
 
         /*
          * Array References
@@ -79,6 +80,38 @@ public class Notes
         int[] moreOdds = odds;
         odds[2] = 6;
         System.out.println(moreOdds[2]);        //print 6
-
+        
+        /*
+         * Enhanced For Loop
+         * 
+         *  Iterates over the elements in an array. Similar to the "for value in ... " structure
+         *  in Python.
+         */
+        
+        for (int odd : odds)
+        {
+            System.out.println(odd);
+        }
+        
+        /*
+         * Limitations of Enhanced for Loops
+         * 
+         * The local variable (e.g. odd) contains a copy of the value of the element in the aray.
+         * 
+         * We cannot modify the elements in the array.
+         * We cannot easily determine the index of an element.
+         */
+        
+        for (int odd: odds)
+        {
+            odd += 1; // if we change the array, this should be able to increment each value in the array by 1
+        }
+        
+        for (int odd : odds)
+        {
+            System.out.println(odd); // array is not modified
+        }
+        
+        
     }
 }
