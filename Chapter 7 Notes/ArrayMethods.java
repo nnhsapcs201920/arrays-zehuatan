@@ -23,14 +23,49 @@ public class ArrayMethods
 
     public void shiftRight()
     {
-        int[] oldValues = values;
-        for (int i = 1; i < values.length; i++)
+        int[] oldValues = new int[values.length];
+        for (int i = 0; i < oldValues.length; i++)
+        {
+            oldValues[i] = values[i];
+        }
+        for (int i = 1; i < oldValues.length; i++)
         {
             values[i] = oldValues[i - 1];
         }
-        values[1] = values[values.length - 1];//wrong
+        values[0] = oldValues[oldValues.length - 1];
     }
-
+    
+    public void replaceEvens()
+    {
+        for (int i = 0; i < values.length; i++)
+        {
+            if (values[i] % 2 == 0)
+            {
+                values[i] = 0;
+            }
+        }
+    }
+    
+    public void replaceNeighbors()
+    {
+        int[] oldValues = new int[values.length];
+        for (int i = 0; i < oldValues.length; i++)
+        {
+            oldValues[i] = values[i];
+        }
+        for (int i = 1; i < oldValues.length - 1; i++)
+        {
+            if (oldValues[i - 1] > oldValues[i + 1])
+            {
+                values[i] = oldValues[i - 1];
+            }
+            else
+            {
+                values[i] = oldValues[i + 1];
+            }
+        }
+    }
+    
     public static void main( String[] args )
     {
         int[] testValues = { 3, 5, 6, 1 /* add your own values */ };
@@ -44,6 +79,17 @@ public class ArrayMethods
         tester.printArray();
         tester.shiftRight();
         tester.printArray();
-
+        
+        int[] testValues3 = { 1, 2, 3, 4, 5, 6 /* add your own values */ };
+        tester = new ArrayMethods(testValues3);
+        tester.printArray();
+        tester.replaceEvens();
+        tester.printArray();
+        
+        int[] testValues4 = { 1, 8, 3, 2, 5, 7 /* add your own values */ };
+        tester = new ArrayMethods(testValues4);
+        tester.printArray();
+        tester.replaceNeighbors();
+        tester.printArray();
     }
 }
