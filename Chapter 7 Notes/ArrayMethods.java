@@ -23,16 +23,12 @@ public class ArrayMethods
 
     public void shiftRight()
     {
-        int[] oldValues = new int[values.length];
-        for (int i = 0; i < oldValues.length; i++)
+        int last = values[values.length - 1];
+        for (int i = values.length - 1; i > 0; i--)
         {
-            oldValues[i] = values[i];
+            values[i] = values[i - 1];
         }
-        for (int i = 1; i < oldValues.length; i++)
-        {
-            values[i] = oldValues[i - 1];
-        }
-        values[0] = oldValues[oldValues.length - 1];
+        values[0] = last;
     }
     
     public void replaceEvens()
@@ -48,22 +44,60 @@ public class ArrayMethods
     
     public void replaceNeighbors()
     {
-        int[] oldValues = new int[values.length];
-        for (int i = 0; i < oldValues.length; i++)
+        int replacedNum = values[0];
+        int currentNum;
+        for (int i = 1; i < values.length - 1; i++)
         {
-            oldValues[i] = values[i];
-        }
-        for (int i = 1; i < oldValues.length - 1; i++)
-        {
-            if (oldValues[i - 1] > oldValues[i + 1])
+            currentNum = values[i];
+            if (replacedNum > values[i + 1])
             {
-                values[i] = oldValues[i - 1];
+                values[i] = replacedNum;
             }
             else
             {
-                values[i] = oldValues[i + 1];
+                values[i] = values[i + 1];
+            }
+            replacedNum = currentNum;
+        }
+    }
+    
+    public void replaceMiddle()
+    {
+        int[] newValues = null;
+        
+        if (values.length % 2 == 0)
+        {
+            newValues = new int[values.length - 2];
+            for (int i = 0; i < values.length / 2 - 1; i++)
+            {
+                newValues[i] = values[i];
+            }
+            for (int i = values.length - 1; i > (values.length / 2); i--)
+            {
+                newValues[i - 2] = values[i];
             }
         }
+        else
+        {
+            newValues = new int[values.length - 1];
+            for (int i = 0; i < (values.length / 2); i++)
+            {
+                newValues[i] = values[i];
+            }
+            for (int i = values.length - 1; i > (values.length / 2); i--)
+            {
+                newValues[i - 1] = values[i];
+            }
+        }
+        values = newValues;
+        
+    }
+    
+    public void moveEvensToFront()
+    {
+        int temp;
+        //does swapping work?
+        
     }
     
     public static void main( String[] args )
@@ -90,6 +124,18 @@ public class ArrayMethods
         tester = new ArrayMethods(testValues4);
         tester.printArray();
         tester.replaceNeighbors();
+        tester.printArray();
+        
+        int[] testValues5 = { 1, 2, 3, 4, 5, 6, /* add your own values */ };
+        tester = new ArrayMethods(testValues5);
+        tester.printArray();
+        tester.replaceMiddle();
+        tester.printArray();
+        
+        int[] testValues6 = { 1, 8, 3, 2, 5, 7, 9, 10, 14, 13, 62, 23 /* add your own values */ };
+        tester = new ArrayMethods(testValues6);
+        tester.printArray();
+        tester.moveEvensToFront();
         tester.printArray();
     }
 }
