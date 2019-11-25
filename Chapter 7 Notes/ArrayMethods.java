@@ -30,7 +30,7 @@ public class ArrayMethods
         }
         values[0] = last;
     }
-    
+
     public void replaceEvens()
     {
         for (int i = 0; i < values.length; i++)
@@ -41,7 +41,7 @@ public class ArrayMethods
             }
         }
     }
-    
+
     public void replaceNeighbors()
     {
         int replacedNum = values[0];
@@ -60,11 +60,11 @@ public class ArrayMethods
             replacedNum = currentNum;
         }
     }
-    
+
     public void replaceMiddle()
     {
         int[] newValues = null;
-        
+
         if (values.length % 2 == 0)
         {
             newValues = new int[values.length - 2];
@@ -90,16 +90,31 @@ public class ArrayMethods
             }
         }
         values = newValues;
-        
+
     }
-    
+
     public void moveEvensToFront()
     {
         int temp;
-        //does swapping work?
-        
+        boolean success = true;
+        //shift all evens to swap with odds
+        do
+        {
+            success = true;
+            for (int i = 0; i < values.length - 1; i++)
+            {
+                if (values[i] % 2 == 1 && values[i + 1] % 2 == 0)
+                {
+                    temp = values[i];
+                    values[i] = values[i + 1];
+                    values[i + 1] = temp;
+                    success = false;
+                }
+            }
+        }
+        while (success == false);
     }
-    
+
     public static void main( String[] args )
     {
         int[] testValues = { 3, 5, 6, 1 /* add your own values */ };
@@ -113,25 +128,25 @@ public class ArrayMethods
         tester.printArray();
         tester.shiftRight();
         tester.printArray();
-        
+
         int[] testValues3 = { 1, 2, 3, 4, 5, 6 /* add your own values */ };
         tester = new ArrayMethods(testValues3);
         tester.printArray();
         tester.replaceEvens();
         tester.printArray();
-        
+
         int[] testValues4 = { 1, 8, 3, 2, 5, 7 /* add your own values */ };
         tester = new ArrayMethods(testValues4);
         tester.printArray();
         tester.replaceNeighbors();
         tester.printArray();
-        
+
         int[] testValues5 = { 1, 2, 3, 4, 5, 6, /* add your own values */ };
         tester = new ArrayMethods(testValues5);
         tester.printArray();
         tester.replaceMiddle();
         tester.printArray();
-        
+
         int[] testValues6 = { 1, 8, 3, 2, 5, 7, 9, 10, 14, 13, 62, 23 /* add your own values */ };
         tester = new ArrayMethods(testValues6);
         tester.printArray();
