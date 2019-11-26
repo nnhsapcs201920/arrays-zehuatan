@@ -113,6 +113,12 @@ public class Notes
         }
         
         
+        
+        
+    }
+    
+    public static void warmup()
+    {
         //Warmup #1
         
         int[] test = new int[5];
@@ -121,6 +127,12 @@ public class Notes
             test[i] = 10 * (i + 1);
         }
         
+        //Warmup #2
+        double[] test2 = {0.1, 0.2, 0.3, 0.4, 0.5};
+        for (double arr : test2)
+        {
+            System.out.println(arr);
+        }
         
     }
     
@@ -172,4 +184,6 @@ public class Notes
             System.out.println(calendar);
         }
     }
+    
+    
 }

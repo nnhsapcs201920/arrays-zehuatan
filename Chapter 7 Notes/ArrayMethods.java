@@ -96,23 +96,41 @@ public class ArrayMethods
     public void moveEvensToFront()
     {
         int temp;
+        /*
         boolean success = true;
         //shift all evens to swap with odds
+
         do
         {
-            success = true;
-            for (int i = 0; i < values.length - 1; i++)
-            {
-                if (values[i] % 2 == 1 && values[i + 1] % 2 == 0)
-                {
-                    temp = values[i];
-                    values[i] = values[i + 1];
-                    values[i + 1] = temp;
-                    success = false;
-                }
-            }
+        success = true;
+        for (int i = 0; i < values.length - 1; i++)
+        {
+        if (values[i] % 2 == 1 && values[i + 1] % 2 == 0)
+        {
+        temp = values[i];
+        values[i] = values[i + 1];
+        values[i + 1] = temp;
+        success = false;
+        }
+        }
         }
         while (success == false);
+         */
+        int count = values.length - 1;
+        for (int i = values.length - 1; i < count; i--)
+        {
+            if (values[i] % 2 == 0)
+            {
+                temp = values[i];
+                for (int j = i; j > 0; j--)
+                {
+                    values[j] = values[j - 1];
+                }
+                values[0] = temp;
+                count--;
+            }
+        }
+
     }
 
     public static void main( String[] args )
