@@ -116,23 +116,85 @@ public class ArrayMethods
         }
         while (success == false);
          */
-        int count = values.length - 1;
-        for (int i = values.length - 1; i < count; i--)
+        int count = 0;
+        for (int i = values.length - 1; i > 0; i--)
         {
-            if (values[i] % 2 == 0)
+            if (values[i + count] % 2 == 0)
             {
-                temp = values[i];
-                for (int j = i; j > 0; j--)
+                temp = values[i + count];
+                for (int j = i + count; j > 0; j--)
                 {
                     values[j] = values[j - 1];
                 }
                 values[0] = temp;
-                count--;
+                count++;
             }
         }
 
     }
-
+    
+    public int secondLargest()
+    {
+        int largest = values[0];
+        int secondLargest = values[0];
+        for (int arr : values)
+        {
+            if (arr > largest)
+            {
+                secondLargest = largest;
+                largest = arr;
+            }
+            else if (arr < largest && arr > secondLargest)
+            {
+                secondLargest = arr;
+            }
+        }
+        return secondLargest;
+    }
+    
+    public boolean increasingOrder()
+    {
+        int previous = values[0];
+        for (int arr : values)
+        {
+            if (previous > arr)
+            {
+                return false;
+            }
+            previous = arr;
+        }
+        return true;
+    }
+    
+    public boolean adjacentDoubles()
+    {
+        int previous = values[0];
+        for (int i = 1 ; i < values.length; i++)
+        {
+            if (previous == values[i])
+            {
+                return true;
+            }
+            previous = values[i];
+        }
+        return false;
+    }
+    
+    public boolean duplicates()
+    {
+        for (int i = 0; i < values.length; i++)
+        {
+            for (int j = i + 1; j < values.length; j++)
+            {
+                if (values[i] == values[j])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
     public static void main( String[] args )
     {
         int[] testValues = { 3, 5, 6, 1 /* add your own values */ };
@@ -170,5 +232,25 @@ public class ArrayMethods
         tester.printArray();
         tester.moveEvensToFront();
         tester.printArray();
+        
+        int[] testValues7 = { 1, 8, 3, 2, 5, 7, 9, 10, 14, 13, 62, 23 /* add your own values */ };
+        tester = new ArrayMethods(testValues7);
+        tester.printArray();
+        System.out.println(tester.secondLargest());
+        
+        int[] testValues8 = { 1, 2, 3, 4, 5, 7, 9, 10, 14, 16, 62, 89 /* add your own values */ };
+        tester = new ArrayMethods(testValues8);
+        tester.printArray();
+        System.out.println(tester.increasingOrder());
+        
+        int[] testValues9 = { 1, 8, 3, 3, 5, 7, 9, 10, 14, 13, 62, 23 /* add your own values */ };
+        tester = new ArrayMethods(testValues9);
+        tester.printArray();
+        System.out.println(tester.adjacentDoubles());
+        
+        int[] testValues10 = { 1, 8, 3, 62, 5, 7, 9, 10, 14, 13, 62, 23 /* add your own values */ };
+        tester = new ArrayMethods(testValues10);
+        tester.printArray();
+        System.out.println(tester.duplicates());
     }
 }
