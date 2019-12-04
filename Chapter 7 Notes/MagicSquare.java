@@ -16,22 +16,69 @@ public class MagicSquare
             }
         }
 
-        int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        int[] numbers = new int[16];
         boolean valid = true;
-        for (int value : numbers)
+
+        for (int i = 0; i < square.length; i++)
         {
-            for (int i = 0; i < square.length; i++)
+            for (int j = 0; j < square[0].length; j++)
             {
-                for (int j = 0; j < square[0].length; j++)
+                if (square[i][j] > 0 && square[i][j] < 17)
                 {
-                    if (value == square[i][j])
+                    numbers[i + j] = square[i][j];
+                    for (int k = 0; k < i + j; k++)
                     {
-                        break;
+                        if (numbers[k] == square[i][j])
+                        {
+                            valid = false;
+                            break;
+                        }
                     }
+                }
+                else
+                {
+                    valid = false;
+                    break;
                 }
             }
         }
 
+        int sum = square[0][0] + square[0][1] + square[0][2] + square[0][3];
+
+        for (int i = 0; i < square.length; i++)
+        {
+            if (sum != square[i][0] + square[i][1] + square[i][2] + square[i][3])
+            {
+                valid = false;
+            }
+        }
+
+        for (int i = 0; i < square[0].length; i++)
+        {
+            if (sum != square[0][i] + square[1][i] + square[2][i] + square[3][i])
+            {
+                valid = false;
+            }
+        }
+
+        if (sum != square[0][0] + square[1][1] + square[2][2] + square[3][3])
+        {
+            valid = false;
+        }
+
+        if (sum != square[0][3] + square[1][2] + square[2][1] + square[3][0])
+        {
+            valid = false;
+        }
+        
+        if (valid == true)
+        {
+            System.out.println("This is a magic square!");
+        }
+        else if (valid == false)
+        {
+            System.out.println("This is not a magic square!");
+        }
     }
 }
 
