@@ -5,6 +5,7 @@ public class MagicSquare
     public static void main (String args[])
     {
         Scanner scan = new Scanner(System.in);
+        /*
         int[][] square = new int[4][4];
 
         for (int i = 0; i < square.length; i++)
@@ -78,6 +79,41 @@ public class MagicSquare
         else if (valid == false)
         {
             System.out.println("This is not a magic square!");
+        }
+        */
+        System.out.print("Enter a side length for the magic square: ");
+        int n = scan.nextInt();
+        int[][] square = new int[n][n];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = n; j < n; j++)
+            {
+                square[i][j] = 0;
+            }
+        }
+        int row = n - 1;
+        int col = n / 2;
+        for (int k = 1; k <= n * n; k++)
+        {
+            square[row][col] = k;
+            row = (row + 1) % n;
+            col = (col + 1) % n;
+            if (square[row][col] != 0)
+            {
+                row = (n + row - 2) % n;
+                col = (n + col - 1) % n;
+            }
+            
+            
+        }
+        
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                System.out.print(square[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }
