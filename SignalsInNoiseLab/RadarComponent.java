@@ -5,6 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Dimension;
 import javax.swing.JComponent;
 
+
 /**
  * Class that is responsible for rendering the current radar scan image and the accumulated radar image.
  * 

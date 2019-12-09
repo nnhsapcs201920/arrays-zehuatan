@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.util.Scanner;
 
 /**
  * Class that contains the main method for the program and creates the frame containing the component.
@@ -22,7 +23,14 @@ public class RadarViewer
         
         // prompt the user to optionally enter the location of the monster
         //  (if they don't, leave the location randomly determined)
-        
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the location of the monster (type -1 to randomly generate location)");
+        //make a variable scan.nextInt and see if it's -1, then randomly generate. else set the row or col if 
+        //between 0 and 100 inclusive
+        System.out.print("Row (between 0 and 100 inclusive): ");
+        int monsterRow = scan.nextInt();
+        System.out.print("Row (between 0 and 100 inclusive): ");
+        int monsterCol = scan.nextInt();
         
         //
         // !!! add code here !!!
