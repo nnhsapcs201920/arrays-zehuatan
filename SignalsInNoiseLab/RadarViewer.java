@@ -20,49 +20,70 @@ public class RadarViewer
         final int COLS = 100;
         Radar radar = new Radar(ROWS, COLS);
         radar.setNoiseFraction(0.10);
-        
-        // prompt the user to optionally enter the location of the monster
-        //  (if they don't, leave the location randomly determined)
+
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the location of the monster (type -1 to randomly generate location)");
-        //make a variable scan.nextInt and see if it's -1, then randomly generate. else set the row or col if 
-        //between 0 and 100 inclusive
-        System.out.print("Row (between 0 and 100 inclusive): ");
-        int monsterRow = scan.nextInt();
-        System.out.print("Row (between 0 and 100 inclusive): ");
-        int monsterCol = scan.nextInt();
+        System.out.println("Enter the location of the monster (type -1 to randomize location)");
         
+        int input;
+        int monsterRow = 0;
+        int monsterCol = 0;
+        do
+        {
+            System.out.print("Row (between 0 and 100 inclusive): ");
+            input = scan.nextInt();
+            if (input == -1)
+            {
+                break;
+            }
+            monsterRow = input;
+        }
+        while (monsterRow < 0 || monsterRow > 100);
+        if (input != -1)
+        {
+            do
+            {
+                System.out.print("Column (between 0 and 100 inclusive): ");
+                input = scan.nextInt();
+                if (input == -1)
+                {
+                    break;
+                }
+                monsterCol = input;
+            }
+            while (monsterCol < 0 || monsterCol > 100);
+
+            Location monsterLocation = new Location(monsterRow, monsterCol);
+            radar.setMonsterLocation(monsterLocation);
+        }
+
         //
         // !!! add code here !!!
         //
-        
-        
+
         radar.scan();
-        
         JFrame frame = new JFrame();
-        
         frame.setTitle("Signals in Noise Lab");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         // a frame contains a single component; create the radar component and add it to the frame
         RadarComponent component = new RadarComponent(radar);
         frame.add(component);
-        
+
         // set the size of the frame to encompass the contained component
         frame.pack();
-        
+
         // make the frame visible which will result in the paintComponent method being invoked on the
         //  component.
         frame.setVisible(true);
-        
+
         // perform 100 scans of the radar wiht a slight pause between each
         // after each scan, instruct the Java Run-Time to redraw the window
         for(int i = 0; i < 100; i++)
         {
             Thread.sleep(100); // sleep 100 milliseconds (1/10 second)
-            
+
             radar.scan();
-            
+
             frame.repaint();
         }
     }

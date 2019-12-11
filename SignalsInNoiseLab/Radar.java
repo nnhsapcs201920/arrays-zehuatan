@@ -78,7 +78,7 @@ public class Radar
         {
             for (int j = 0; j < accumulator[i].length; j++)
             {
-                if (currentScan[i][j] = true) 
+                if (currentScan[i][j] == true) 
                 {
                     accumulator[i][j]++;
                 }
