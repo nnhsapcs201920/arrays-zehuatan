@@ -78,7 +78,7 @@ public class RadarViewer
 
         // perform 100 scans of the radar wiht a slight pause between each
         // after each scan, instruct the Java Run-Time to redraw the window
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 1000; i++)
         {
             Thread.sleep(100); // sleep 100 milliseconds (1/10 second)
 

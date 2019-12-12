@@ -32,4 +32,22 @@ public class Location
         return this.column;
     }
     
+    /**
+     * Sets the row of the location
+     * @param row The index of the new row of the location.
+     */
+    public void setRow(int row)
+    {
+        this.row = row;
+    }
+    
+    /**
+     * Sets the column of the location to an index.
+     * @param col The index of the new column of the location.
+     */
+    public void setCol(int col)
+    {
+        this.column = col;
+    }
+    
 }
