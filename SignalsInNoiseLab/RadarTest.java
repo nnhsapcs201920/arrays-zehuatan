@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -19,7 +18,7 @@ public class RadarTest
     public RadarTest()
     {
     }
-    
+
     /**
      * Sets up the test fixture.
      *
@@ -39,7 +38,7 @@ public class RadarTest
     public void tearDown()
     {
     }
-    
+
     /**
      * Tests multiple cases.
      * 
@@ -57,14 +56,19 @@ public class RadarTest
     {
         // test that the Radar class successfully finds the location of the monster after several scans
         
-        
-        //
-        // !!! add code here !!!
-        //
-        
+        Radar radar = new Radar(100, 100);
+        Location monsterLocation = new Location(50, 50);
+        radar.setMonsterLocation(monsterLocation);
+        for (int i = 0; i < 1000; i++)
+        {
+            radar.scan();
+        }
+        Location foundLocation = radar.findMonster();
+        assertEquals(foundLocation.getRow(), 50);
+        assertEquals(foundLocation.getCol(), 50);
         
     }
-    
+
     /**
      * Verifies that false negatives are produced.
      * 
@@ -78,7 +82,14 @@ public class RadarTest
         //
         // !!! add code here !!!
         //
-        
+        Radar radar = new Radar(100, 100);
+        Location monsterLocation = new Location(50, 50);
+        radar.setMonsterLocation(monsterLocation);
+        for (int i = 0; i < 1000; i++)
+        {
+            radar.scan();
+        }
+        assert(radar.getAccumulatedDetection(monsterLocation) < radar.getNumScans());
         
     }
 }
