@@ -76,7 +76,7 @@ public class Radar
         
         currentScan[monsterLocation.getRow()][monsterLocation.getCol()] = true;
         this.injectNoise();
-        // For a stationary monster
+        
 
         for (int i = 0; i < accumulator.length; i++)
         {
@@ -93,111 +93,7 @@ public class Radar
         // !!! add code here !!!
         //
 
-        /*
-         * changing the monster's location
-         */
-
-        /*
-        for (int i = 0; i < accumulator.length; i++)
-        {
-            for (int j = 0; j < accumulator[i].length; j++)
-            {
-
-                int rowAbove = (i + 1) % accumulator.length;
-                int colAbove = (j + 1) % accumulator[0].length;
-                int rowBelow = (i + 99) % accumulator.length;
-                int colBelow = (j + 99) % accumulator[0].length;
-
-                if (previousScan[rowAbove][colBelow] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowAbove][colBelow];
-                }
-                if (previousScan[rowAbove][j] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowAbove][j];
-                }
-                if (previousScan[rowAbove][colAbove] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowAbove][colAbove];
-                }
-                if (previousScan[i][colBelow] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[i][colBelow];
-                }
-                if (previousScan[i][j] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[i][j];
-                }
-                if (previousScan[i][colAbove] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[i][colAbove];
-                }
-                if (previousScan[rowBelow][colBelow] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowBelow][colBelow];
-                }
-                if (previousScan[rowBelow][j] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowBelow][j];
-                }
-                if (previousScan[rowBelow][colAbove] == true && currentScan[i][j] == true)
-                {
-                    accumulator[i][j] += accumulator[rowBelow][colAbove];
-                }
-
-                /*
-                if ((previousScan[rowAbove][colBelow] == false || previousScan[rowAbove][j] == false || previousScan[rowAbove][colAbove] == false
-                || previousScan[i][colBelow] == false || previousScan[i][j] == false || previousScan[i][colAbove]== false
-                || previousScan[rowBelow][colBelow] == false || previousScan[rowBelow][j] == false|| previousScan[rowBelow][colAbove] == false) &&
-                accumulator[i][j] > 0)
-                {
-                accumulator[i][j]--;
-                }
-                 */
-                /*
-                accumulator[i][j] += (accumulator[rowAbove][colBelow] + accumulator[rowAbove][j] + accumulator[rowAbove][colAbove]
-                + accumulator[i][colBelow] + accumulator[i][colAbove]
-                + accumulator[rowBelow][colBelow] + accumulator[rowBelow][j] + accumulator[rowBelow][colAbove]);
-                 
-            }
-        }
-
-        for (int i = 0; i < accumulator.length; i++)
-        {
-            for (int j = 0; j < accumulator[i].length; j++)
-            {
-                if (currentScan[i][j] == true) 
-                {
-                    previousScan[i][j] = true;
-                }
-                else
-                {
-                    previousScan[i][j] = false;
-                }
-            }
-        }
-        Location newMonsterLocation = new Location(this.monsterLocation.getRow() - 1 + (2 * (int) Math.random()),
-                this.monsterLocation.getCol() - 1 + (2 * (int) Math.random()));
-
-        if (newMonsterLocation.getRow() < 0)
-        {
-            newMonsterLocation.setRow(currentScan.length - 1);
-        }
-        if (newMonsterLocation.getRow() > currentScan.length - 1)
-        {
-            newMonsterLocation.setRow(0);
-        }
-        if (newMonsterLocation.getCol() < 0)
-        {
-            newMonsterLocation.setCol(currentScan[0].length - 1);
-        }
-        if (newMonsterLocation.getCol() > currentScan[0].length - 1)
-        {
-            newMonsterLocation.setCol(0);
-        }
-
-        setMonsterLocation(newMonsterLocation);
-        */
+        
         numScans++;
     }
 
