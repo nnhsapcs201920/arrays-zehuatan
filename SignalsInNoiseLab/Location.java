@@ -4,7 +4,7 @@ public class Location
     private int row;
     private int column;
     /**
-     * Constructs a Location on a grid with integer row and column
+     * Constructs a Location on a grid with an integer row and column pair
      * @param row The row index of the new location
      * @param col The column index of the new location
      */
